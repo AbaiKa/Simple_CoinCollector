@@ -47,6 +47,7 @@ public class ResourcesDroneManager : MonoBehaviour
                 var drone = Instantiate(dronePrefab, spawnPosition, Quaternion.identity);
                 drone.Init();
                 drone.SetStation(station);
+                drone.SetFaction(station.Faction);
                 drones.Add(drone);
             }
         }
