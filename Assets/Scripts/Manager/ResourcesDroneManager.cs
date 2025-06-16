@@ -18,8 +18,8 @@ public class ResourcesDroneManager : MonoBehaviour
     public void Init(BaseStation station)
     {
         this.station = station;
-        dronesCountEventSO.OnRaised += OnDronesCountChanged;
-        dronesSpeedEventSO.OnRaised += OnDronesSpeedChanged;
+        dronesCountEventSO.onRaised += OnDronesCountChanged;
+        dronesSpeedEventSO.onRaised += OnDronesSpeedChanged;
     }
 
     private void OnDronesCountChanged(int value)
