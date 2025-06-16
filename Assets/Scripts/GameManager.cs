@@ -16,8 +16,8 @@ public class GameManager : MonoBehaviour
             stations[i].Init();
         }
 
-        uiManager.Init(stations);
         resourcesManager.Init();
+        uiManager.Init(stations);
     }
 
     private void ChangeGameSpeed(float speed)

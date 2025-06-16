@@ -430,6 +430,7 @@ MonoBehaviour:
   scorePanel: {fileID: 234279383}
   debugPanel: {fileID: 234279382}
   unitInfo: {fileID: 234279385}
+  gameSettingsSO: {fileID: 11400000, guid: b23c3615a1c222d48bd4e7216fedf30b, type: 2}
 --- !u!114 &234279382
 MonoBehaviour:
   m_ObjectHideFlags: 0

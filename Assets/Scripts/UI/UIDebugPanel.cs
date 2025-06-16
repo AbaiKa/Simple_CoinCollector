@@ -32,6 +32,15 @@ public class UIDebugPanel : MonoBehaviour
         resourcesSpeedIF.onValueChanged.AddListener(OnResourcesSpeedChanged);
         dronesPathToggle.onValueChanged.AddListener(OnDronesPathChanged);
     }
+    public void SetProperties(GameSettingsSO settings)
+    {
+        gameSpeedSlider.value = settings.GameSpeed;
+        dronesCountSlider.value = settings.DronesCount;
+        dronesSpeedSlider.value = settings.DronesSpeed;
+        resourcesSpeedIF.text = settings.ResourcesSpeed.ToString();
+        dronesPathToggle.isOn = settings.ShowDronesPath;
+        OnDronesPathChanged(settings.ShowDronesPath);
+    }
 
     private void OnGameSpeedChanged(float value)
     {
