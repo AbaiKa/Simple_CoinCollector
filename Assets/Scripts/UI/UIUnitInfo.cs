@@ -10,6 +10,7 @@ public class UIUnitInfo : MonoBehaviour
     public void Init() 
     {
         panel.SetActive(false);
+        //TODO: DI or Services
         selectionManager = FindObjectOfType<SelectionManager>();
         selectionManager.onSelect.AddListener(OnSelect);
         selectionManager.onDeselect.AddListener(OnDeselect);
