@@ -14,6 +14,7 @@ public class ResourcesDroneManager : MonoBehaviour
     private ResourceDrone dronePrefab;
 
     private BaseStation station;
+    private bool debugPath;
 
     private List<ResourceDrone> drones = new List<ResourceDrone>();
 
@@ -24,7 +25,10 @@ public class ResourcesDroneManager : MonoBehaviour
         dronesSpeedEventSO.onRaised += OnDronesSpeedChanged;
         dronesPathEventSO.onRaised += OnDronesPathChanged;
     }
-
+    private void Update()
+    {
+        DebugPath(debugPath);
+    }
     private void OnDronesCountChanged(int value)
     {
         value = Mathf.Max(1, value);
@@ -36,7 +40,7 @@ public class ResourcesDroneManager : MonoBehaviour
             int toAdd = value - currentCount;
             for (int i = 0; i < toAdd; i++)
             {
-                Vector2 offset2D = Random.insideUnitCircle;
+                Vector2 offset2D = Random.insideUnitCircle * 1.5f;
                 Vector3 offset = new Vector3(offset2D.x, 0, offset2D.y);
                 Vector3 spawnPosition = station.transform.position + offset;
 
@@ -65,6 +69,10 @@ public class ResourcesDroneManager : MonoBehaviour
         }
     }
     private void OnDronesPathChanged(bool value)
+    {
+        debugPath = value;
+    }
+    private void DebugPath(bool value)
     {
         for (int i = 0; i < drones.Count; i++)
         {

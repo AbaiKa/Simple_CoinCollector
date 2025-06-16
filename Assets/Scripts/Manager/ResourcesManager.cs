@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ResourcesManager : MonoBehaviour
@@ -10,10 +12,31 @@ public class ResourcesManager : MonoBehaviour
 
     private float spawnInterval;
     private Coroutine spawnRoutine;
+    private List<Resource> resources = new List<Resource>();
     public void Init()
     {
         spawnSpeedEventSO.onRaised += SetSpawnSpeed;
     }
+    public bool TryGetNearest(Vector3 point, out Resource nearest)
+    {
+        nearest = null;
+        float minDistanceSqr = Mathf.Infinity;
+
+        var freeResources = resources.Where(r => !r.IsReserved);
+
+        foreach (var resource in freeResources)
+        {
+            float distSqr = (resource.transform.position - point).sqrMagnitude;
+            if (distSqr < minDistanceSqr)
+            {
+                minDistanceSqr = distSqr;
+                nearest = resource;
+            }
+        }
+
+        return nearest != null;
+    }
+
     private void SetSpawnSpeed(int amountInMinutes)
     {
         spawnInterval = 60 / (float)Mathf.Max(1, amountInMinutes);
@@ -24,7 +47,6 @@ public class ResourcesManager : MonoBehaviour
         }
         spawnRoutine = StartCoroutine(SpawnRoutine());
     }
-    
     private IEnumerator SpawnRoutine()
     {
         var interval = new WaitForSeconds(spawnInterval);
@@ -32,8 +54,14 @@ public class ResourcesManager : MonoBehaviour
         {
             yield return interval;
             var pos = GetRandomPoint();
-            Instantiate(resourcePrefab, pos, Quaternion.identity);
+            Resource resource = Instantiate(resourcePrefab, pos, Quaternion.identity);
+            resource.onDeInit.AddListener(OnDeInit);
+            resources.Add(resource);
         }
+    }
+    private void OnDeInit(Resource resource)
+    {
+        resources.Remove(resource);
     }
     private Vector3 GetRandomPoint()
     {
