@@ -518,6 +518,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dronesCountEventSO: {fileID: 11400000, guid: cd32c87a8fdc5684db201ef603f33c97, type: 2}
   dronesSpeedEventSO: {fileID: 11400000, guid: d6b5efe57154cbd48a12043911b82cf4, type: 2}
+  dronesPathEventSO: {fileID: 11400000, guid: 51e532f4eb612464fa61206b20d60f11, type: 2}
   dronePrefab: {fileID: 3358015850470641288, guid: 426fa5d78d331d14ba8957e752072730,
     type: 3}
 --- !u!114 &296684059
@@ -1621,6 +1622,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dronesCountEventSO: {fileID: 11400000, guid: cd32c87a8fdc5684db201ef603f33c97, type: 2}
   dronesSpeedEventSO: {fileID: 11400000, guid: d6b5efe57154cbd48a12043911b82cf4, type: 2}
+  dronesPathEventSO: {fileID: 11400000, guid: 51e532f4eb612464fa61206b20d60f11, type: 2}
   dronePrefab: {fileID: 3358015850470641288, guid: 426fa5d78d331d14ba8957e752072730,
     type: 3}
 --- !u!114 &681492846

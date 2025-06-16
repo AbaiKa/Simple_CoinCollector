@@ -9,6 +9,8 @@ public class ResourcesDroneManager : MonoBehaviour
     [SerializeField]
     private FloatEventChannelSO dronesSpeedEventSO;
     [SerializeField]
+    private BoolEventChannelSO dronesPathEventSO;
+    [SerializeField]
     private ResourceDrone dronePrefab;
 
     private BaseStation station;
@@ -20,6 +22,7 @@ public class ResourcesDroneManager : MonoBehaviour
         this.station = station;
         dronesCountEventSO.onRaised += OnDronesCountChanged;
         dronesSpeedEventSO.onRaised += OnDronesSpeedChanged;
+        dronesPathEventSO.onRaised += OnDronesPathChanged;
     }
 
     private void OnDronesCountChanged(int value)
@@ -59,6 +62,13 @@ public class ResourcesDroneManager : MonoBehaviour
         for (int i = 0; i < drones.Count; i++)
         {
             drones[i].SetSpeed(value);
+        }
+    }
+    private void OnDronesPathChanged(bool value)
+    {
+        for (int i = 0; i < drones.Count; i++)
+        {
+            drones[i].DebugPath(value);
         }
     }
 }
