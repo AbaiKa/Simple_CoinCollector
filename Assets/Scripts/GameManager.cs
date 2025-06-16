@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private UIManager uiManager;
     [SerializeField] private BaseStation[] stations;
 
     private void Start()
@@ -10,5 +11,7 @@ public class GameManager : MonoBehaviour
         {
             stations[i].Init();
         }
+
+        uiManager.Init(stations);
     }
 }
