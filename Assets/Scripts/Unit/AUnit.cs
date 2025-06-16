@@ -2,7 +2,9 @@ using UnityEngine;
 
 public abstract class AUnit : MonoBehaviour, ISelectable
 {
+    public abstract void Init();
     public abstract void Tick();
+    public abstract void DeInit();
 
     public virtual void OnSelect()
     {

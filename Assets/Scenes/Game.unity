@@ -516,6 +516,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d6c54c975985de4cad33526d86d0732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dronesCountEventSO: {fileID: 11400000, guid: cd32c87a8fdc5684db201ef603f33c97, type: 2}
+  dronesSpeedEventSO: {fileID: 11400000, guid: d6b5efe57154cbd48a12043911b82cf4, type: 2}
   dronePrefab: {fileID: 3358015850470641288, guid: 426fa5d78d331d14ba8957e752072730,
     type: 3}
 --- !u!114 &296684059
@@ -1617,6 +1619,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d6c54c975985de4cad33526d86d0732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dronesCountEventSO: {fileID: 11400000, guid: cd32c87a8fdc5684db201ef603f33c97, type: 2}
+  dronesSpeedEventSO: {fileID: 11400000, guid: d6b5efe57154cbd48a12043911b82cf4, type: 2}
   dronePrefab: {fileID: 3358015850470641288, guid: 426fa5d78d331d14ba8957e752072730,
     type: 3}
 --- !u!114 &681492846
@@ -2190,6 +2194,7 @@ MonoBehaviour:
   stations:
   - {fileID: 681492846}
   - {fileID: 296684059}
+  gameSpeedEventSO: {fileID: 11400000, guid: afcbbf22639f1534093ab95d832a62b1, type: 2}
 --- !u!4 &1047384439
 Transform:
   m_ObjectHideFlags: 0

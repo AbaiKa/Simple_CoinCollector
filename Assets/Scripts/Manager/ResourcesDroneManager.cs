@@ -1,14 +1,64 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ResourcesDroneManager : MonoBehaviour
 {
+    [Header("Properties")]
+    [SerializeField]
+    private IntEventChannelSO dronesCountEventSO;
+    [SerializeField]
+    private FloatEventChannelSO dronesSpeedEventSO;
     [SerializeField]
     private ResourceDrone dronePrefab;
 
     private BaseStation station;
 
+    private List<ResourceDrone> drones = new List<ResourceDrone>();
+
     public void Init(BaseStation station)
     {
         this.station = station;
+        dronesCountEventSO.OnRaised += OnDronesCountChanged;
+        dronesSpeedEventSO.OnRaised += OnDronesSpeedChanged;
+    }
+
+    private void OnDronesCountChanged(int value)
+    {
+        value = Mathf.Max(1, value);
+
+        int currentCount = drones.Count;
+
+        if (value > currentCount)
+        {
+            int toAdd = value - currentCount;
+            for (int i = 0; i < toAdd; i++)
+            {
+                Vector2 offset2D = Random.insideUnitCircle;
+                Vector3 offset = new Vector3(offset2D.x, 0, offset2D.y);
+                Vector3 spawnPosition = station.transform.position + offset;
+
+                var drone = Instantiate(dronePrefab, spawnPosition, Quaternion.identity);
+                drone.Init();
+                drone.SetStation(station);
+                drones.Add(drone);
+            }
+        }
+        else if (value < currentCount)
+        {
+            int toRemove = currentCount - value;
+            for (int i = 0; i < toRemove; i++)
+            {
+                var last = drones[drones.Count - 1];
+                drones.RemoveAt(drones.Count - 1);
+                last.DeInit();
+            }
+        }
+    }
+    private void OnDronesSpeedChanged(float value)
+    {
+        for (int i = 0; i < drones.Count; i++)
+        {
+            drones[i].SetSpeed(value);
+        }
     }
 }
