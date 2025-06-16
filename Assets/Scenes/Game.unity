@@ -442,12 +442,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameSpeedText: {fileID: 176549510}
   gameSpeedSlider: {fileID: 2102433220}
+  gameSpeedEventSO: {fileID: 11400000, guid: afcbbf22639f1534093ab95d832a62b1, type: 2}
   dronesCountText: {fileID: 2092613911}
   dronesCountSlider: {fileID: 1733434913}
+  dronesCountEventSO: {fileID: 11400000, guid: cd32c87a8fdc5684db201ef603f33c97, type: 2}
   dronesSpeedText: {fileID: 2142656980}
   dronesSpeedSlider: {fileID: 551793699}
+  dronesSpeedEventSO: {fileID: 11400000, guid: d6b5efe57154cbd48a12043911b82cf4, type: 2}
   resourcesSpeedIF: {fileID: 605209140}
+  resourcesSpeedEventSO: {fileID: 11400000, guid: 9c4d269b4aab748449b25c5808170201,
+    type: 2}
   dronesPathToggle: {fileID: 779860824}
+  dronesPathEventSO: {fileID: 11400000, guid: 51e532f4eb612464fa61206b20d60f11, type: 2}
 --- !u!114 &234279383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -914,8 +920,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0413\u0435\u043D\u0435\u0440\u0430\u0446\u0438\u044F \u0440\u0435\u0441\u0443\u0440\u0441\u043E\u0432
-    \u0432 \u043C\u0438\u043D\u0443\u0442\u0443"
+  m_text: "\u0420\u0435\u0441\u0443\u0440\u0441\u044B \u0432 \u043C\u0438\u043D\u0443\u0442\u0443"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
