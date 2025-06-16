@@ -11,29 +11,21 @@
 * Вывод состояния дрона
 
 
-Так выглядит структура проекта:
-Game
-│
-├── Core
-│   ├── GameManager
-│   ├── ResourcesManager
-│   └── UIManager
-│
-├── Services (ассистенты & контроллеры)
-|   ├── BaseStation
-|   ├── ResourcesDroneManager
-| 
-├── Units
-│   ├── AUnit (абстрактный класс)
-│       └── ADrone (абстрактный класс)
-│           └── ResourceDrone
-│       └── (в будущем все возможные юниты)
-│
-├── Targeting
-│   ├── ITargetable (интерфейс)
-│   ├── Resource (реализует ITargetable)
-│
-└── Events (события)
-    ├── IntEventChannelSO
-    ├── FloatEventChannelSO
-    └── BoolEventChannelSO
+Архитектура:
+Core — управление игрой: GameManager, UIManager, ResourcesManager.
+
+Services — вспомогательные системы: BaseStation, ResourcesDroneManager.
+
+Units — все сущности с поведением:
+
+AUnit — базовый класс для всех юнитов.
+
+ADrone → ResourceDrone — дроны, собирающие ресурсы.
+
+Targeting — объекты, которые можно выбрать как цель:
+
+ITargetable — интерфейс.
+
+Resource — пример реализации цели.
+
+Events — ScriptableObject события (IntEventChannelSO и т.п.) для связи между системами.
