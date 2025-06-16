@@ -72,6 +72,11 @@ public class ResourceDrone : ADrone
                     SetState(UnitState.Idle);
                 }
             }
+            else if (target.IsReserved)
+            {
+                target = null;
+                agent.ResetPath();
+            }
         }
         else
         {
