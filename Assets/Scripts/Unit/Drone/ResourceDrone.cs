@@ -3,20 +3,12 @@ using UnityEngine;
 public class ResourceDrone : ADrone
 {
     [SerializeField] private float workTime;
+    [SerializeField] private GameObject effectPrefab;
 
     private ResourcesManager resourcesManager;
 
     private Resource target;
     private float elapsedTime = 0;
-    public override void SetTarget(ITargetable target)
-    {
-        this.target = target as Resource;
-
-        if (this.target != null)
-        {
-            agent.SetDestination(target.GetTransform().position);
-        }
-    }
     public override void Init()
     {
         //TODO: DI or Services
@@ -30,6 +22,15 @@ public class ResourceDrone : ADrone
             target.Release(this);
         }
         Destroy(gameObject);
+    }
+    public override void SetTarget(ITargetable target)
+    {
+        this.target = target as Resource;
+
+        if (this.target != null)
+        {
+            agent.SetDestination(target.GetTransform().position);
+        }
     }
     private void Update()
     {
@@ -49,6 +50,7 @@ public class ResourceDrone : ADrone
                 {
                     station.Deposit(1);
                     SetState(UnitState.Searching);
+                    Instantiate(effectPrefab, transform.position, Quaternion.identity);
                 }
             }
         }

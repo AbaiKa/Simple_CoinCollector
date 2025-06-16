@@ -252,6 +252,8 @@ MonoBehaviour:
   <meshRenderer>k__BackingField: {fileID: 1437492075706099904}
   lineRenderer: {fileID: 6198131040878116059}
   workTime: 2
+  effectPrefab: {fileID: 4618689573514518537, guid: 0926875ab71e9934693127220a20afbb,
+    type: 3}
 --- !u!1 &5115297629849108369
 GameObject:
   m_ObjectHideFlags: 0
